@@ -1,0 +1,18 @@
+{
+    "compilerOptions": {
+        "target": "ESNext",
+        "module": "ES2022",
+        "moduleResolution": "node",
+        "baseUrl": "./",
+        "strict": true, // Enable strict type-checking options
+        "skipLibCheck": true, // Skip type checking of declaration files
+        "noImplicitAny": false, // Bypass raising errors on `any` type
+        //   "parser": "babel-eslint"
+    },
+    "include": [
+        "resources/ts/**/*",
+        "resources/css/**/*",
+        "resources/img/**/*",
+        "resources/sass/**/*"
+    ] // Frontend paths pattern
+}
