@@ -5,6 +5,7 @@ import { autoAnimatePlugin } from '@formkit/auto-animate/vue'
 import uiMain from './components/index'
 // @ts-ignore
 import { ZiggyVue } from 'ziggy-js/dist/vue';
+import store from "./store/store";
 
 const app = createApp({})
 
@@ -19,5 +20,6 @@ uiMain.forEach(ui=>{
 
 app
     .use(ZiggyVue)
+	.use(store)
     .use(autoAnimatePlugin)
     .mount('#app')
