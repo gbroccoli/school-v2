@@ -1,20 +1,13 @@
 import {createStore} from "vuex";
 
-function querySelector(metaNameCsrfToken: string) {
-
-}
-
+// @ts-ignore
 export default createStore({
-	state: {
-
-	},
-	getters: {
-	},
-	mutations: {
-	},
-	actions: {
-	},
-	modules: {
+	// @ts-ignore
+	state () {
+		return {
+			// @ts-ignore
+			csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+		}
 	}
 })
 
