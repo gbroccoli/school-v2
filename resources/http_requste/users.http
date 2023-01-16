@@ -1,0 +1,11 @@
+GRAPHQL http://localhost:8000/
+
+query {
+    greetings
+}
+
+{
+  "varName": "varValue"
+}
+
+###
