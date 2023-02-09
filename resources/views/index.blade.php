@@ -4,5 +4,5 @@
 
 
 @section('main')
-	<lauout-rum></lauout-rum>
+
 @endsection

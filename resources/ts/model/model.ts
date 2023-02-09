@@ -55,7 +55,3 @@ export interface tasks {
 	user_id?: number;
 	files?: any[];
 }
-
-export interface args {
-
-}

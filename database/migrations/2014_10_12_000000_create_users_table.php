@@ -19,7 +19,7 @@ return new class extends Migration
 				->string('patronymic')
 				->default('');
 			$table
-				->string('cousrse_group')
+				->string('course_group')
 				->nume;
             $table
 				->string('email')
