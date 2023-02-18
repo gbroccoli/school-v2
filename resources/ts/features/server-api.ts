@@ -6,10 +6,11 @@ class Api {
 	#api_url_main = "/api/"
 	#token = store.state.csrf
 
-	async #serverInit(methods = "GET" as string, url: string) {
+	async #serverInit(methods = "GET" as string, url: string, params = "" as string) {
 		const {data} = await server({
 			method: methods,
-			url: `${this.#api_url_main}${url}?_pass=${process.env.AXIOS_PASSWORD}`,
+			// @ts-ignore
+			url: `${this.#api_url_main}${url}?_pass=${import.meta.env.AXIOS_PASSWORD}${params}`,
 			data: {
 				_token: this.#token
 			}
@@ -19,7 +20,7 @@ class Api {
 	}
 
 	getUrl() {
-		return this.#serverInit("GET", "users");
+		return this.#serverInit("GET", "users", "&search=ы");
 	}
 
 	postUrl() {
