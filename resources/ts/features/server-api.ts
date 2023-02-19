@@ -5,30 +5,40 @@ class Api {
 
 	#api_url_main = "/api/"
 	#token = store.state.csrf
+	#password = "hunter98";
 
-	async #serverInit(methods = "GET" as string, url: string, params = "" as string) {
+	async #serverInit(
+		methods = "GET" as string,
+		url: string,
+		params = "" as string,
+		headers = {"content-type": "application/json"} as object,
+		datas = {} as object
+	) {
 		const {data} = await server({
 			method: methods,
-			// @ts-ignore
-			url: `${this.#api_url_main}${url}?_pass=${import.meta.env.AXIOS_PASSWORD}${params}`,
+			url: `${this.#api_url_main}${url}?_pass=${this.#password}${params}`,
 			data: {
-				_token: this.#token
+				_token: this.#token,
+				...datas
+			},
+			headers: {
+				...headers
 			}
 		});
 
-		return data
+		return data;
 	}
 
-	getUrl() {
-		return this.#serverInit("GET", "users", "&search=ы");
+	getUrl(url: string, params = "" as string, headers = {"content-type": "application/json"} as object) {
+		return this.#serverInit("GET", url, params, headers);
 	}
 
-	postUrl() {
-
+	postUrl(url: string, params = "" as string, headers = {"content-type": "application/json"} as object, datas: object) {
+		return this.#serverInit("POST", url, params, datas);
 	}
 
-	anyUrl() {
-
+	anyUrl(methods: string, url: string, params: string, headers = {"content-type": "application/json"} as object, datas: object) {
+		return this.#serverInit(methods, url, params, headers, datas);
 	}
 }
 

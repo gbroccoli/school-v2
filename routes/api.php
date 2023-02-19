@@ -19,3 +19,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get("/users", [\App\Http\Controllers\api\ApiControllres::class, "users"]);
+
+
+Route::controller(\App\Http\Controllers\api\ApiControllres::class)->group(function () {
+	Route::get("/material", "material")->name("material");
+});

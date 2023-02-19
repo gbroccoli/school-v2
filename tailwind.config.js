@@ -1,4 +1,7 @@
 /** @type {import('tailwindcss').Config} */
+
+const {fontFamily } = require('tailwindcss/defaultTheme')
+
 module.exports = {
     darkMode: 'class',
 	content: [
@@ -10,7 +13,7 @@ module.exports = {
 	theme: {
 		extend: {
 			fontFamily: {
-				'sans' : ['IBM\\Plex\\Sans"', 'IBM\\Plex\\Sans\\Condensed', 'sans-serif']
+				'sans' : ['IBM\\Plex\\Sans', 'IBM\\Plex\\Sans\\Condensed', 'sans-serif', ...fontFamily.sans]
 			}
 		},
 	},

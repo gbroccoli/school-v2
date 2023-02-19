@@ -8,7 +8,9 @@
         "skipLibCheck": true, // Skip type checking of declaration files
         "noImplicitAny": false, // Bypass raising errors on `any` type
         //   "parser": "babel-eslint"
-    },
+		"resolveJsonModule": true,
+		"esModuleInterop": true
+	},
     "include": [
         "resources/ts/**/*",
         "resources/css/**/*",

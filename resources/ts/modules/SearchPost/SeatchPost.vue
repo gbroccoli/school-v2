@@ -1,10 +1,25 @@
 <template>
 	<div class="flex bg-white w-[550px] rounded-full items-center mt-6 justify-between relative">
-		<input type="text" name="search" maxlength="50" class="font-[IBM_Plex_Sans] border-none rounded-l-full w-full outline-none px-[15px] py-[10px]" :value="value" @input.prevent="(e)=>value=e.target.value" @change.prevent="search" @keyup.enter="search">
+		<input type="text" name="search" maxlength="50" class="font-[IBM_Plex_Sans] border-none rounded-l-full w-full outline-none px-[15px] py-[10px]" @focus.prevent="search" :value="value" @input.prevent="(e)=>{
+			value = e.target.value;
+			sortBySearch(value)
+		}" @keyup.enter="search">
 		<button type="button" class="pr-[10px] rounded-r-full" @click.prevent="search"><SearchIcon></SearchIcon></button>
-		<div class="search-list absolute bottom-[-45px] rounded-full p-2 bg-white w-full " v-if="result.length > 0">
+		<div class="search-list absolute bottom-[-45px] rounded-full p-2 bg-white w-full">
 			<ul>
-				<li v-for="res in result">{{res.name}} {{res.surname}}</li>
+				<li v-for="res in result">
+					<div class="materila">
+						<div class="material-title">
+							{{res.title}}
+						</div>
+
+						<div class="material-descr">
+							{{res.descr}}
+						</div>
+
+
+					</div>
+				</li>
 			</ul>
 		</div>
 	</div>
@@ -20,19 +35,34 @@ export default defineComponent({
 	data() {
 		return {
 			value: "" as string,
-			result: [] as object,
-			sort: [] as object
+			result: [] as any,
+			sort: [] as any
 		}
 	},
 	components: {SearchIcon},
 	methods: {
 		search() {
-			new Api().getUrl().then(res=>res.map((item, i)=>{
-				if (i < 5) {
-					this.result = res;
-				}
+
+			this.result = []
+
+			new Api().getUrl("material", ``).then(res=>res.map((item, i)=>{
+				this.result = res;
 			}))
+		},
+
+		sortBySearch(value) {
+
+			this.sort = []
+
+			this.result.map(sorts => {
+				if (value === "") {
+					this.sort = sorts
+				} else if (sorts.title.toLowerCase().includes(value.toLowerCase())) {
+					this.sort = sorts
+				}
+			})
 		}
+
 	},
 })
 </script>
