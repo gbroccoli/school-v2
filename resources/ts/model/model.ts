@@ -55,3 +55,12 @@ export interface tasks {
 	user_id?: number;
 	files?: any[];
 }
+
+export interface Profile {
+	id: number,
+	surname: string,
+	name: string,
+	patronymic?: string,
+	email: string,
+
+}

@@ -7,8 +7,6 @@ import search from "./modules/SearchPost/index"
 // @ts-ignore
 import { ZiggyVue } from 'ziggy-js/dist/vue';
 import store from "./store/store";
-// @ts-ignore
-import uiSchool from "ui-school"
 
 const app = createApp({})
 
@@ -22,9 +20,6 @@ uiMain.forEach(ui=>{
 app.component(search.name, search)
 
 /*-----------------------------------------------------------------------------------------*/
-
-app.use(uiSchool)
-
 app
     .use(ZiggyVue)
 	.use(store)
