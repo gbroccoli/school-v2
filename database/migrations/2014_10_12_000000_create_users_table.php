@@ -19,8 +19,7 @@ return new class extends Migration
 				->string('patronymic')
 				->default('');
 			$table
-				->string('course_group')
-				->nume;
+				->string('course_group');
             $table
 				->string('email')
 				->unique();
@@ -36,6 +35,9 @@ return new class extends Migration
 				->nullable();
             $table
 				->timestamps();
+			$table
+				->string("token", 50)
+				->unique();
         });
     }
 

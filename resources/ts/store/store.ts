@@ -1,4 +1,5 @@
 import {createStore} from "vuex";
+import {HTMLAttributes, readonly} from "vue";
 
 // @ts-ignore
 export default createStore({

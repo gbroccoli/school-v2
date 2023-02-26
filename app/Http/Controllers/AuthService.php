@@ -8,7 +8,8 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthService extends Controller
 {
-	public function viewLogin() {
+	public function viewLogin(): \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse
+	{
 		if (Auth::check()) {
 			return to_route('profile');
 		}

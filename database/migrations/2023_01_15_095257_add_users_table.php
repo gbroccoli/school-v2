@@ -17,8 +17,7 @@ return new class extends Migration
             $table->foreignId('group_id')
 				->constrained()
 				->cascadeOnDelete()
-				->cascadeOnUpdate()
-				->after('patronymic');
+				->cascadeOnUpdate();
         });
     }
 

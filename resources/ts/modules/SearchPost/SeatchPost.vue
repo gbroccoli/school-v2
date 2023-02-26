@@ -29,14 +29,15 @@
 import { defineComponent } from 'vue'
 import SearchIcon from "../../shared/icons/SearchIcon.vue";
 import Api from "../../features/server-api";
+import { Posts } from 'resources/ts/model/model';
 
 export default defineComponent({
 	name: "search-post",
 	data() {
 		return {
 			value: "" as string,
-			result: [] as any,
-			sort: [] as any
+			result: [] as Posts[],
+			sort: [] as Posts[]
 		}
 	},
 	components: {SearchIcon},
@@ -56,9 +57,9 @@ export default defineComponent({
 
 			this.result.map(sorts => {
 				if (value === "") {
-					this.sort = sorts
+					this.sort.push(sorts)
 				} else if (sorts.title.toLowerCase().includes(value.toLowerCase())) {
-					this.sort = sorts
+					this.sort.push(sorts)
 				}
 			})
 		}

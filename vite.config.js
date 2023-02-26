@@ -22,7 +22,9 @@ export default defineConfig({
         }),
 		splitVendorChunkPlugin()
     ],
-	// define: {
-	// 	'process.env': process.env
-	// }
+	resolve: {
+		alias: {
+			'@': '/resources/ts',
+		},
+	}
 });

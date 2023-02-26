@@ -1,2 +1,8 @@
-User-agent: *
-Disallow:
+User-Agent: Yandex, Googlebot
+Allow: /
+Host: https://itrem.webhopm.me
+Disallow: /profile
+Disallow: /routes
+Disallow: /.env
+Disallow: /app
+Sitemap: https://itrem.webhop.me

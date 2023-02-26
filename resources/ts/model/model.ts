@@ -1,59 +1,13 @@
-export interface Value {
-	id: number
-	group: string
-	created_at?: string | Date
-	updated_at?: string | Date
-}
-
-export interface User {
-	name?: string;
-	email?: string;
-	picture?: string;
-	id?: number;
-	group?: string;
-	created_at?: string | Date;
-	updated_at?: string | Date;
-}
-
-export interface groups {
-	id?: number;
-	group?: string;
-	created_at?: string | Date;
-	updated_at?: string | Date;
-}
-
-export interface Cards {
-	id: number;
-	name: string;
-	files: any[];
-}
-
-export interface Text {
-	title: string
-	text: string
-	btn: string
-}
-
 export interface Clock {
-	hour?: number|string|Date
-	minute?: number|string|Date
-	second?: number|string|Date
+	hour?: number|string| Date
+	minute?: number|string| Date
+	second?: number|string| Date
 }
 
-export interface InputOpt {
-	title?: string
-	type?: string
-	name?: string
-	placeholder?: string
-}
-
-export interface tasks {
-	id?: number;
-	title?: string;
-	date?: string;
-	group_id?: number;
-	user_id?: number;
-	files?: any[];
+export interface Opt {
+	id: number,
+	appellation: string,
+	option?: string[]
 }
 
 export interface Profile {
@@ -62,5 +16,18 @@ export interface Profile {
 	name: string,
 	patronymic?: string,
 	email: string,
+	email_verified_at?: boolean,
+	group_id: number | string,
+	course_group: number | string,
+	avatar?: string,
+}
 
+export interface Posts {
+	id: number,
+	title: string,
+	descr: string,
+	body: string,
+	date: string | Date,
+	endDate?: string,
+	files?: string[] | string
 }
