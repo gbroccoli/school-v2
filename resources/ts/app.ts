@@ -7,6 +7,8 @@ import search from "./modules/SearchPost/index"
 // @ts-ignore
 import { ZiggyVue } from 'ziggy-js/dist/vue';
 import store from "./store/store";
+import cardItem from "./modules/CardItem";
+import profileMenu from "./modules/ProfileMenu";
 
 const app = createApp({})
 
@@ -18,6 +20,8 @@ uiMain.forEach(ui=>{
 })
 
 app.component(search.name, search)
+app.component(cardItem.name, cardItem)
+app.component(profileMenu.name, profileMenu)
 
 /*-----------------------------------------------------------------------------------------*/
 app

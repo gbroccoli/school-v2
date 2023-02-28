@@ -13,7 +13,7 @@ const colorItem : Ref<object> = ref({
 
 const sizeItem : Ref<object> = ref({
 	"sm": "text-[]",
-	"md": "text-[]",
+	"md": "text-[14px]",
 	"lg": "text-[]",
 	"xl": "text-[]",
 	"2xl": "text-[]"

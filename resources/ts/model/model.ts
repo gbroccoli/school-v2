@@ -31,3 +31,8 @@ export interface Posts {
 	endDate?: string,
 	files?: string[] | string
 }
+
+export interface Accordions {
+	title: string,
+	body?: string
+}

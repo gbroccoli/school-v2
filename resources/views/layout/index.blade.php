@@ -16,7 +16,9 @@
     <div id="app" class="flex flex-col h-[100%]">
 
         <header class="flex-[0_0_auto] py-[7.5px]">
-            <h1 class="font-['IBM_Plex_Sans_Condensed'] font-[500]">sdfgsdgsdgsdg</h1>
+            <div class="container mx-auto">
+				<profile-menu></profile-menu>
+			</div>
         </header>
 
         <div class="flex-[1_0_auto] bg-slate-900">
