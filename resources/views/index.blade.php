@@ -4,5 +4,5 @@
 
 
 @section('main')
-<search-post></search-post>
+
 @endsection

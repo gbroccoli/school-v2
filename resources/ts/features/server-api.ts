@@ -1,9 +1,9 @@
 import server from 'axios'
 import store from "../store/store";
 
-class Api {
+export default class Api {
 
-	#api_url_main = "/api/"
+	#api_url_main: string = "/api/"
 	#token = store.state.csrf
 	#password = "hunter98";
 
@@ -12,14 +12,14 @@ class Api {
 		url: string,
 		params = "" as string,
 		headers = {"content-type": "application/json"} as object,
-		datas = {} as object
+		record = {} as object
 	) {
-		const {data} = await server({
+		const { data } = await server({
 			method: methods,
 			url: `${this.#api_url_main}${url}?_pass=${this.#password}${params}`,
 			data: {
 				_token: this.#token,
-				...datas
+				...record
 			},
 			headers: {
 				...headers
@@ -29,17 +29,30 @@ class Api {
 		return data;
 	}
 
-	getUrl(url: string, params = "" as string, headers = {"content-type": "application/json"} as object) {
+	methodGetUrl(
+		url: string,
+		params = "GET" as string,
+		headers = {"content-type": "application/json"} as object,
+		record = {} as object
+	) {
 		return this.#serverInit("GET", url, params, headers);
 	}
 
-	postUrl(url: string, params = "" as string, headers = {"content-type": "application/json"} as object, datas: object) {
-		return this.#serverInit("POST", url, params, datas);
+	methodPostUrl(
+		url: string,
+		params = "POST" as string,
+		headers = {"content-type": "application/json"} as object,
+		record: object
+	) {
+		return this.#serverInit("POST", url, params, record);
 	}
 
-	anyUrl(methods: string, url: string, params: string, headers = {"content-type": "application/json"} as object, datas: object) {
-		return this.#serverInit(methods, url, params, headers, datas);
+	methodAnyUrl(
+		methods: string,
+		url: string, params: string,
+		headers = {"content-type": "application/json"} as object,
+		record: object
+	) {
+		return this.#serverInit(methods, url, params, headers, record);
 	}
 }
-
-export default Api;

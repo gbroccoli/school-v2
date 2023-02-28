@@ -4,7 +4,7 @@
 			value = e.target.value;
 			sortBySearch(value)
 		}" @keyup.enter="search">
-		<button type="button" class="pr-[10px] rounded-r-full" @click.prevent="search"><SearchIcon></SearchIcon></button>
+		<button type="button" class="pr-[10px] rounded-r-full" @click.prevent="search"><SearchIcon /></button>
 		<div class="search-list absolute bottom-[-45px] rounded-full p-2 bg-white w-full">
 			<ul>
 				<li v-for="res in result">
@@ -16,8 +16,6 @@
 						<div class="material-descr">
 							{{res.descr}}
 						</div>
-
-
 					</div>
 				</li>
 			</ul>
@@ -29,8 +27,7 @@
 import { defineComponent } from 'vue'
 import SearchIcon from "../../shared/icons/SearchIcon.vue";
 import Api from "../../features/server-api";
-import { Posts } from 'resources/ts/model/model';
-
+import { Posts } from '../../model/model';
 export default defineComponent({
 	name: "search-post",
 	data() {
@@ -43,12 +40,12 @@ export default defineComponent({
 	components: {SearchIcon},
 	methods: {
 		search() {
-
 			this.result = []
 
-			new Api().getUrl("material", ``).then(res=>res.map((item, i)=>{
-				this.result = res;
-			}))
+			new Api().
+				methodGetUrl("material", ``).then(res=>res.map((item)=>{
+					this.result = res;
+				}))
 		},
 
 		sortBySearch(value) {

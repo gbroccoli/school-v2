@@ -15,7 +15,7 @@
 <body>
     <div id="app" class="flex flex-col h-[100%]">
 
-        <header class="flex-[0_0_auto] h-[2rem]">
+        <header class="flex-[0_0_auto] py-[7.5px]">
             <h1 class="font-['IBM_Plex_Sans_Condensed'] font-[500]">sdfgsdgsdgsdg</h1>
         </header>
 
@@ -25,7 +25,11 @@
             </div>
         </div>
 
-        <footer class="flex-[0_0_auto] h-[2rem]"></footer>
+        <footer class="flex-[0_0_auto]">
+			<div class="mx-auto container text-center py-[7.5px]">
+				2022 - {{date("Y")}} broccoli
+			</div>
+		</footer>
 
     </div>
     @vite('resources/ts/app.ts')
