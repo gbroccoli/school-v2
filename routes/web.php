@@ -44,4 +44,4 @@ Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $requ
 	return redirect('/');
 })->middleware(['auth', 'signed'])->name('verification.verify');
 
-
+Route::get("/test", [\App\Http\Controllers\TetsConscontoller\ControllersTest::class, "Tests"]);
