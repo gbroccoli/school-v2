@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class RegisterController extends Controller
 {
@@ -30,9 +33,10 @@ class RegisterController extends Controller
 			"surname" => $data['surname'],
 			"name" => $data["name"],
 			"email" => $data["email"],
-			"password" => $data["password"],
+			"password" => Hash::make($data["password"]),
 			"group_id" => $data["group_id"],
-			"course_group" => $data["course_group"]
+			"course_group" => $data["course_group"],
+			"token" => rand(100, 100000)
 		]);
 
 		if ($user)
@@ -41,5 +45,9 @@ class RegisterController extends Controller
 			auth("web")->login($user);
 			return to_route('verification.notice');
 		}
+
+		Storage::createDirectory(Auth::id());
+
+		return to_route("register");
 	}
 }

@@ -16,7 +16,7 @@ export interface Profile {
 	name: string,
 	patronymic?: string,
 	email: string,
-	email_verified_at?: boolean,
+	email_verified_at?: boolean | Date | string,
 	group_id: number | string,
 	course_group: number | string,
 	avatar?: string,
