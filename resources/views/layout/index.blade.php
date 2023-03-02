@@ -15,9 +15,26 @@
 <body>
     <div id="app" class="flex flex-col h-[100%]">
 
+		@php
+		$user = Auth::user();
+
+        $user = [
+            "id" => $user->id,
+            "surname" => $user->surname,
+            "name" => $user->name,
+            "email" => $user->email,
+            "avatar" => $user->avatar
+		];
+
+		@endphp
+
         <header class="flex-[0_0_auto] py-[7.5px]">
             <div class="container mx-auto">
-				<profile-menu></profile-menu>
+				@foreach($user as $key)
+					{{$key}}
+				@endforeach
+
+				<profile-menu users='@json($user)'></profile-menu>
 			</div>
         </header>
 

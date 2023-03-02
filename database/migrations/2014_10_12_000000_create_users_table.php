@@ -32,6 +32,7 @@ return new class extends Migration
 				->rememberToken();
 			$table
 				->string('avatar')
+				->default("default.png")
 				->nullable();
             $table
 				->timestamps();
