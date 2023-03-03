@@ -43,10 +43,9 @@ class RegisterController extends Controller
 		{
 			event(new Registered($user));
 			auth("web")->login($user);
+			Storage::createDirectory(Auth::id());
 			return to_route('verification.notice');
 		}
-
-		Storage::createDirectory(Auth::id());
 
 		return to_route("register");
 	}

@@ -18,22 +18,22 @@
 		@php
 		$user = Auth::user();
 
-        $user = [
-            "id" => $user->id,
-            "surname" => $user->surname,
-            "name" => $user->name,
-            "email" => $user->email,
-            "avatar" => $user->avatar
-		];
-
+        if (empty($user) != 1) {
+            $user = [
+            	"id" => $user->id,
+            	"surname" => $user->surname,
+            	"name" => $user->name,
+            	"email" => $user->email,
+            	"avatar" => $user->avatar
+			];
+        }
+        
 		@endphp
 
         <header class="flex-[0_0_auto] py-[7.5px]">
             <div class="container mx-auto">
-				@foreach($user as $key)
-					{{$key}}
-				@endforeach
-
+				<div class="bg-white text-black"></div>
+				{{empty($user)}}
 				<profile-menu users='@json($user)'></profile-menu>
 			</div>
         </header>
