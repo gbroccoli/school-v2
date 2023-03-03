@@ -11,10 +11,10 @@ use Illuminate\Support\Facades\Storage;
 
 class RegisterController extends Controller
 {
-	public function index(): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
-	{
-		return view('auth.register');
-	}
+//	public function index(): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
+//	{
+//		return view('auth.register');
+//	}
 
     public function register(Request $request)
 	{
@@ -26,8 +26,6 @@ class RegisterController extends Controller
 			"group_id" => ["required"],
 			"course_group" => ["required"]
 		]);
-
-//		dd($data);
 
 		$user = User::create([
 			"surname" => $data['surname'],

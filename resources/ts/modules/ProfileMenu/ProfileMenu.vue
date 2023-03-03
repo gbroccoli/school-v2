@@ -10,22 +10,38 @@
 				</div>
 			</button>
 			<div v-auto-animate class="profile-blocks absolute top-[50px] rounded bg-white p-4 model" v-if="show" ref="modal">
-				<ul class="profile-list">
-					<li class="profile-item">{{user.name}} {{user.surname}}</li>
-					<li class="profile-item"><a href="#" class="profile-link">Профиль</a></li>
-					<li class="profile-item"><a href="#" class="profile-link">Файлы</a></li>
-					<!--				<li class="profile-item"><a href="#" class="profile-link"></a></li>-->
-					<li class="profile-item"><a href="#" class="profile-link">Настройки</a></li>
-					<li class="profile-item"><a href="#" class="profile-link">Выход</a></li>
-				</ul>
-				<profile-menu-list :links="{main: 'profile-list space-y-4', urls: [{
-					icon: '',
-					url: '/profile',
-					title: 'Профиль'
-				}]}" />
+<!--				<ul class="profile-list">-->
+<!--					<li class="profile-item">{{user.name}} {{user.surname}}</li>-->
+<!--					<li class="profile-item"><a href="#" class="profile-link">Профиль</a></li>-->
+<!--					<li class="profile-item"><a href="#" class="profile-link">Файлы</a></li>-->
+<!--					&lt;!&ndash;				<li class="profile-item"><a href="#" class="profile-link"></a></li>&ndash;&gt;-->
+<!--					<li class="profile-item"><a href="#" class="profile-link">Настройки</a></li>-->
+<!--					<li class="profile-item"><a href="#" class="profile-link">Выход</a></li>-->
+<!--				</ul>-->
+				<profile-menu-list :links="{main: 'profile-list space-y-6', urls: [
+					{
+						icon: '',
+						url: '/profile',
+						title: 'Профиль'
+					},
+					{
+						icon: '',
+						url: '#',
+						title: 'Файлы'
+					},
+					{
+						icon: '',
+						url: '/logout',
+						title: 'Выход'
+					}
+				]}" />
 			</div>
 		</div>
 		<div v-else>
+			<button class="profile-avatars w-[45px] rounded-full cursor-pointer" @click="show = !show" v-click-away="handleClick">
+				<img src="img/default/user.png" alt="avatar" class="rounded-full">
+			</button>
+
 
 		</div>
 	</div>
@@ -35,8 +51,6 @@
 import {defineComponent, PropType} from 'vue'
 import {Profile} from "../../model/model"
 import ProfileMenuList from "./components/ProfileMenuList.vue";
-// @ts-ignore
-import { VueClickOutside } from 'v-click-outside'
 
 export default defineComponent({
 	name: "ProfileMenu",
@@ -46,10 +60,6 @@ export default defineComponent({
 			user: {} as Profile,
 			show: false as boolean
 		}
-	},
-
-	directives: {
-		ClickOutside: VueClickOutside,
 	},
 
 	props: {
@@ -63,16 +73,12 @@ export default defineComponent({
 	},
 
 	mounted() {
-		// document.addEventListener('click', this.hideModal)
-
 		// @ts-ignore
 		this.user = JSON.parse(this.users);
 	},
-	// beforeDestroy() {
-	// 	document.removeEventListener('click', this.hideModal)
-	// },
+
 	methods: {
-		handleClick(e: Event): void {
+		handleClick(): void {
 			this.show = false
 		}
 	}

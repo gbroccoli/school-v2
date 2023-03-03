@@ -22,11 +22,15 @@ Route::controller(\App\Http\Controllers\RegisterController::class)->group(functi
 	Route::post("/register", "register");
 });
 
+Route::controller(\App\Http\Controllers\UserController::class)->group(function () {
+	Route::prefix("user")->group(function () {
+		Route::get("/profile", "index")->name('profile');
+	});
+});
+
 Route::get("/login", function () {
 	return view('auth.login');
 })->name('login');
-
-Route::get("/profile")->name("profile");
 
 Route::get('/email/verify', function () {
 	return view('auth.verify-email');

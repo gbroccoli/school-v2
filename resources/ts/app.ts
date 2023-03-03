@@ -9,7 +9,7 @@ import { ZiggyVue } from 'ziggy-js/dist/vue';
 import store from "./store/store";
 import cardItem from "./modules/CardItem";
 import profileMenu from "./modules/ProfileMenu";
-import vClickOutside from 'vue-click-outside'
+// @ts-ignore
 import VueClickAway from "vue3-click-away";
 
 const app = createApp({})

@@ -54,4 +54,14 @@ use Laravel\Sanctum\HasApiTokens;
 	{
 		return $this->belongsTo();
 	}
+
+	 public function roles(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+	 {
+		 return $this->belongsToMany(Role::class, 'user_roles');
+	 }
+
+	 public function isAdmin(): bool
+	 {
+		 return $this->roles()->where('name', 'admin')->exists();
+	 }
 }
