@@ -1,6 +1,6 @@
 @extends('layout.index')
 
-@section('title', 'Образовательная платформа')
+@section('title', '')
 
 
 @section('main')

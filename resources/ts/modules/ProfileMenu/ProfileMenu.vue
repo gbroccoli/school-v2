@@ -47,7 +47,7 @@
 					urls: [
 						{
 							icon: '',
-							url: '/auth/singin',
+							url: '/auth/signin',
 							title: 'Войти'
 						},
 					]

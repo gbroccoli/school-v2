@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>@yield('title') | IT-колледж</title>
+    <title>@yield('title')IT Штаб-квартира</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@100;200;300;400;500;600;700&family=IBM+Plex+Sans:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
@@ -31,7 +31,7 @@
 
         <header class="flex-[0_0_auto] py-[15px]">
             <div class="container mx-auto flex justify-between items-center">
-				<h1 class="logo font-bold font-[IBM_Plex_Sans_Condensed] text-[32px]">IT-колледж</h1>
+				<h1 class="logo font-bold font-[IBM_Plex_Sans_Condensed] text-[32px]">IT Штаб-квартира</h1>
 				<profile-menu users='@json($user)'></profile-menu>
 			</div>
         </header>

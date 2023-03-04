@@ -28,11 +28,8 @@ Route::group(['prefix'=>'auth'], function () {
 
 Route::group(['prefix'=>'user'], function () {
 	Route::get("/profile", [\App\Http\Controllers\UserController::class, 'index'])->name('profile');
+	Route::get("/setting")->name("setting");
 });
-
-//Route::get("/login", function () {
-//	return view('auth.login');
-//})->name('login');
 
 Route::get('/email/verify', function () {
 	return view('auth.verify-email');
