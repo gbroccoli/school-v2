@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthService extends Controller
 {
-	public function viewLogin(): \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse
+	public function viewLogin()
 	{
 		if (Auth::check()) {
 			return to_route('profile');
@@ -17,7 +17,8 @@ class AuthService extends Controller
 		return view('auth.login');
 	}
 
-    public function login(Request $request) {
+    public function login(Request $request): \Illuminate\Http\RedirectResponse
+	{
 		if (Auth::check()) {
 			return to_route('profile');
 		}
@@ -31,6 +32,8 @@ class AuthService extends Controller
 
 		if (Auth::attempt($form, $remember)) {
 			$request->session()->save();
+
+			return to_route('profile');
 		}
 
 		return to_route('login')->withErrors([

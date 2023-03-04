@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use \App\Http\Controllers\AuthService;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,20 +18,21 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
 Route::view('/', 'index')->name('index');
 
-Route::controller(\App\Http\Controllers\RegisterController::class)->group(function (){
-	Route::get("/register", "index")->name("register");
-	Route::post("/register", "register");
+Route::group(['prefix'=>'auth'], function () {
+//	Route::get("/register", [\App\Http\Controllers\RegisterController::class, 'index'])->name("register");
+	Route::post("/register", [\App\Http\Controllers\RegisterController::class, 'store'])->name('singup');
+
+	Route::get('/signin', [AuthService::class, "viewLogin"])->name('login');
+	Route::post('/signin', [\App\Http\Controllers\AuthService::class, 'login']);
 });
 
-Route::controller(\App\Http\Controllers\UserController::class)->group(function () {
-	Route::prefix("user")->group(function () {
-		Route::get("/profile", "index")->name('profile');
-	});
+Route::group(['prefix'=>'user'], function () {
+	Route::get("/profile", [\App\Http\Controllers\UserController::class, 'index'])->name('profile');
 });
 
-Route::get("/login", function () {
-	return view('auth.login');
-})->name('login');
+//Route::get("/login", function () {
+//	return view('auth.login');
+//})->name('login');
 
 Route::get('/email/verify', function () {
 	return view('auth.verify-email');

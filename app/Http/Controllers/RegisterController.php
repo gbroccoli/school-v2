@@ -16,7 +16,7 @@ class RegisterController extends Controller
 //		return view('auth.register');
 //	}
 
-    public function register(Request $request)
+    public function store(Request $request): \Illuminate\Http\RedirectResponse
 	{
 		$data = $request->validate([
 			"surname" => ["required", "string"],

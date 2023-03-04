@@ -6,7 +6,7 @@
 					<!--				<img :src=`@image/${user.avatar}` alt="avatar">-->
 				</div>
 				<div v-else>
-					<img src="img/default/user.png" alt="avatar" class="rounded-full">
+					<img src="/img/default/user.png" alt="avatar" class="rounded-full">
 				</div>
 			</button>
 			<div v-auto-animate class="profile-blocks absolute top-[50px] rounded bg-white p-4 model" v-if="show" ref="modal">
@@ -38,17 +38,27 @@
 			</div>
 		</div>
 		<div v-else>
-			<button class="profile-avatars w-[45px] rounded-full cursor-pointer" @click="show = !show" v-click-away="handleClick">
-				<img src="img/default/user.png" alt="avatar" class="rounded-full">
+			<button class="profile-avatars w-[45px] rounded-full cursor-pointer shadow-lg" @click="show = !show" v-click-away="handleClick">
+				<img :src="'/img/default/user.png'" alt="avatar" class="rounded-full">
 			</button>
-
-
+			<div v-auto-animate class="profile-blocks absolute top-[50px] left-[-50px] rounded bg-white p-4 model shadow-lg" v-if="show" ref="modal">
+				<profile-menu-list :links="{
+					main: 'profile-list space-y-6',
+					urls: [
+						{
+							icon: '',
+							url: '/auth/singin',
+							title: 'Войти'
+						},
+					]
+				}" />
+			</div>
 		</div>
 	</div>
 </template>
 
 <script lang="ts">
-import {defineComponent, PropType} from 'vue'
+import {defineComponent, PropType, onMounted, ref} from 'vue'
 import {Profile} from "../../model/model"
 import ProfileMenuList from "./components/ProfileMenuList.vue";
 
@@ -69,7 +79,13 @@ export default defineComponent({
 	},
 
 	setup() {
+		const domainName = ref<string | null>(null);
 
+		onMounted(() => {
+			domainName.value = window.location.protocol;
+		});
+
+		return { domainName };
 	},
 
 	mounted() {
