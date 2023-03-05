@@ -28,16 +28,27 @@ class AuthService extends Controller
 			'password'
 		]);
 
-		$remember = $request->remember;
+		$remember_me = $request->remember_me;
 
-		if (Auth::attempt($form, $remember)) {
-			$request->session()->save();
+		if (Auth::attempt($form, $remember_me)) {
+			$request->session()->regenerate();
 
-			return to_route('profile');
+			return to_route('/');
 		}
 
 		return to_route('login')->withErrors([
 			'msg' => 'Неудачная попытка'
 		]);
+	}
+
+	public function signout(Request $request)
+	{
+		Auth::logout();
+
+		$request->session()->invalidate();
+
+		$request->session()->regenerateToken();
+
+		return response()->json(['message' => 'Выход выполнен успешно']);
 	}
 }

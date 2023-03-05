@@ -1,20 +1,22 @@
 <script setup lang="ts">
 
 import { PropType } from "vue"
+import {urlsAny} from "../../../model/model"
 
-defineProps({
+const props = defineProps({
 	links: {
-		type: Object as PropType<Object>
+		type: Object as PropType<urlsAny>
 	}
 })
-
 </script>
 
 <template>
 	<ul :class="links.main">
-		<li :class="links.chiles" v-for="(link, i) in links.urls" :key="i">
+		<li :class="links.chiles" v-for="(link, i) in links.urls" :key="i" class="cursor-pointer">
 			<component :is="link.icon" />
-			<a :class="links.chiles2" :href="link.url">{{link.title}}</a>
+			<div v-if="typeof link.url">
+				<a :class="links.chiles2" @click.prevent="link.url">{{link.title}}</a>
+			</div>
 		</li>
 	</ul>
 </template>

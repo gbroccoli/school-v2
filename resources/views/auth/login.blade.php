@@ -4,10 +4,6 @@
 
 @section('main')
 	<div class="flex flex-col items-center justify-center h-full">
-		<form class="text-center w-full" action="#" method="POST">
-			<div class="grid grid-cols-6 w-full">
-
-			</div>
-		</form>
+		<login-form></login-form>
 	</div>
 @endsection

@@ -15,36 +15,44 @@
 <body>
     <div id="app" class="flex flex-col h-[100%]">
 
-		@php
-		$user = Auth::user();
-
-        if (empty($user) != 1) {
-            $user = [
-            	"id" => $user->id,
-            	"surname" => $user->surname,
-            	"name" => $user->name,
-            	"avatar" => $user->avatar
-			];
-        }
-
-		@endphp
-
-        <header class="flex-[0_0_auto] py-[15px]">
+        <header class="flex-[0_0_auto] py-[15px] bg-green-900">
             <div class="container mx-auto flex justify-between items-center">
-				<h1 class="logo font-bold font-[IBM_Plex_Sans_Condensed] text-[32px]">IT Штаб-квартира</h1>
-				<profile-menu users='@json($user)'></profile-menu>
+				<a href="/"><h1 class="logo font-bold font-[IBM_Plex_Sans_Condensed] text-[32px] text-white">IT Штаб-квартира</h1></a>
+				@auth
+
+					@php
+						$user = Auth::user();
+
+						$user = [
+								"id" => $user->id,
+								"surname" => $user->surname,
+								"name" => $user->name,
+								"avatar" => $user->avatar
+							];
+
+					@endphp
+
+					<profile-menu users='@json($user)'></profile-menu>
+				@endauth
+
+				@guest
+					<a href="{{route('login')}}" class="block text-white border px-[1.5rem] py-[0.5rem]">Войти</a>
+				@endguest
 			</div>
         </header>
 
         <div class="flex-[1_0_auto]">
-            <div class="container mx-auto">
+            <div class="container mx-auto py-[35px]">
                 @yield('main')
             </div>
         </div>
 
-        <footer class="flex-[0_0_auto]">
-			<div class="mx-auto container text-center py-[7.5px]">
-				2022 - {{date("Y")}} broccoli
+        <footer class="flex-[0_0_auto] bg-green-900 text-white">
+			<div class="mx-auto container text-center py-[15px] flex justify-between items-start">
+				<a href="/">IT Штаб-квартира</a>
+				<div>
+					©{{date("Y")}} broccoli
+				</div>
 			</div>
 		</footer>
 

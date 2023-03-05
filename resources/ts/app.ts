@@ -11,6 +11,7 @@ import cardItem from "./modules/CardItem";
 import profileMenu from "./modules/ProfileMenu";
 // @ts-ignore
 import VueClickAway from "vue3-click-away";
+import loginForm from "./modules/LoginForm";
 
 const app = createApp({})
 
@@ -24,6 +25,9 @@ uiMain.forEach(ui=>{
 app.component(search.name, search)
 app.component(cardItem.name, cardItem)
 app.component(profileMenu.name, profileMenu)
+
+
+app.component(loginForm.name, loginForm)
 
 /*-----------------------------------------------------------------------------------------*/
 app

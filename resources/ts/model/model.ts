@@ -36,3 +36,10 @@ export interface Accordions {
 	title: string,
 	body?: string
 }
+
+export interface urlsAny {
+	main: string,
+	chiles: string,
+	chiles2: string,
+	url: string[] | void | number[]
+}

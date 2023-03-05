@@ -23,7 +23,9 @@ Route::group(['prefix'=>'auth'], function () {
 	Route::post("/register", [\App\Http\Controllers\RegisterController::class, 'store'])->name('singup');
 
 	Route::get('/signin', [AuthService::class, "viewLogin"])->name('login');
-	Route::post('/signin', [\App\Http\Controllers\AuthService::class, 'login']);
+	Route::post('/signin', [\App\Http\Controllers\AuthService::class, 'login'])->name('loginTo');
+
+	Route::post('/signout', [\App\Http\Controllers\AuthService::class, "signout"])->name('signout');
 });
 
 Route::group(['prefix'=>'user'], function () {
