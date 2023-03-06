@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthService extends Controller
 {
-	public function viewLogin()
+	public function viewLogin(): \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse
 	{
 		if (Auth::check()) {
 			return to_route('profile');
@@ -17,10 +17,10 @@ class AuthService extends Controller
 		return view('auth.login');
 	}
 
-    public function login(Request $request): \Illuminate\Http\RedirectResponse
+    public function login(Request $request): \Illuminate\Http\JsonResponse
 	{
 		if (Auth::check()) {
-			return to_route('profile');
+			return response()->json(["msg"=>"Пользователь авторизирован"]);
 		}
 
 		$form = $request->only([
@@ -33,12 +33,12 @@ class AuthService extends Controller
 		if (Auth::attempt($form, $remember_me)) {
 			$request->session()->regenerate();
 
-			return to_route('/');
+			return response()->json(['authorization'=>true]);
+		} else {
+			return response()->json(['authorization'=>false]);
 		}
 
-		return to_route('login')->withErrors([
-			'msg' => 'Неудачная попытка'
-		]);
+
 	}
 
 	public function signout(Request $request)

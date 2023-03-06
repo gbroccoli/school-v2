@@ -1,18 +1,21 @@
 <template>
-	<form @submit.prevent="handleSubmit" class="flex flex-col">
-		<label>
-			Email:
-			<input type="email" v-model.trim="email" required />
-		</label>
-		<label>
-			Password:
-			<input type="password" v-model.trim="password" required />
-		</label>
-		<label>
-			<input type="checkbox" v-model="rememberMe" />
-			Запомнить меня
-		</label>
-		<button type="submit" :disabled="!isFormValid">Log in</button>
+	<form @submit.prevent="handleSubmit" class="flex flex-col bg-gray-300 p-4 rounded-xl">
+		<h2 class="font-[IBM_Plex_Sans] text-[32px] font-bold text-center">Вход в личный кабинет</h2>
+		<div class="grid grid-cols-3 gap-4 my-4">
+			<label class="col-span-3 font-[IBM_Plex_Sans_Condensed]">
+				Email:<br>
+				<input class="w-full rounded-md px-5 py-1 font-[IBM_Plex_Sans_Condensed]" type="email" v-model.trim="email" required />
+			</label>
+			<label class="col-span-3">
+				Password:<br>
+				<input class="w-full rounded-md px-5 py-1 font-[IBM_Plex_Sans_Condensed]" type="password" v-model.trim="password" required />
+			</label>
+			<label>
+				<input type="checkbox" class="login-remember" v-model="rememberMe" />
+				Запомнить меня
+			</label>
+		</div>
+		<ui-button label="Войти" type="submit" color="accept" :disabled="!isFormValid"></ui-button>
 		<div v-if="loginError" class="text-red-500 mt-2">{{ loginError }}</div>
 	</form>
 </template>
@@ -21,9 +24,11 @@
 import { defineComponent, ref, Ref } from 'vue';
 import axios from 'axios';
 import route from 'ziggy-js';
+import UiButton from "../../shared/UI/uiButton.vue";
 
 export default defineComponent({
 	name: 'LoginForm',
+	components: {UiButton},
 	setup() {
 		const email: Ref<string> = ref('');
 		const password: Ref<string> = ref('');
@@ -43,11 +48,14 @@ export default defineComponent({
 				});
 
 				if (response.status === 200) {
-					// window.location.href = route("profile");
-					console.log(response)
+					if (response.data.authorization) {
+						window.location.href = route("profile");
+					} else  {
+						loginError.value = "Не верно введёт email или пароль"
+					}
 				}
 			} catch (error: any) {
-				loginError.value = error.response.data.message;
+				loginError.value = error.response.data.msg;
 			}
 		};
 
@@ -62,3 +70,9 @@ export default defineComponent({
 	},
 });
 </script>
+
+<style lang="scss" scoped>
+.login-remember:checked {
+	background-color: green;
+}
+</style>

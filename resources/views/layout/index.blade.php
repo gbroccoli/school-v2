@@ -28,7 +28,7 @@
 								"surname" => $user->surname,
 								"name" => $user->name,
 								"avatar" => $user->avatar
-							];
+						];
 
 					@endphp
 
@@ -49,7 +49,7 @@
 
         <footer class="flex-[0_0_auto] bg-green-900 text-white">
 			<div class="mx-auto container text-center py-[15px] flex justify-between items-start">
-				<a href="/">IT Штаб-квартира</a>
+				<a href="{{route('index')}}">IT Штаб-квартира</a>
 				<div>
 					©{{date("Y")}} broccoli
 				</div>

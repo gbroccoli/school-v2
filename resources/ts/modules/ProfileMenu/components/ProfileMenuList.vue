@@ -14,9 +14,8 @@ const props = defineProps({
 	<ul :class="links.main">
 		<li :class="links.chiles" v-for="(link, i) in links.urls" :key="i" class="cursor-pointer">
 			<component :is="link.icon" />
-			<div v-if="typeof link.url">
-				<a :class="links.chiles2" @click.prevent="link.url">{{link.title}}</a>
-			</div>
+			<a v-if="typeof link.url !== 'function'" :href="link.url">{{link.title}}</a>
+			<a v-if="typeof link.url !== 'string'" :class="links.chiles2" @click.prevent="link.url">{{link.title}}</a>
 		</li>
 	</ul>
 </template>

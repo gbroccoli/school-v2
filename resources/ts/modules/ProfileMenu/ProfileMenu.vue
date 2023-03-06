@@ -3,13 +3,13 @@
 		<div>
 			<button class="profile-avatars rounded-full cursor-pointer" @click="show = !show" v-click-away="handleClick">
 				<div v-if="user.avatar !== 'user.png'" class="w-[45px]">
-					<!--				<img :src=`@image/${user.avatar}` alt="avatar">-->
+					<img :src="'/storage/avatars/' + user.avatar" alt="avatar">
 				</div>
 				<div v-else class="w-[45px]">
 					<img src="/img/default/user.png" alt="avatar" class="rounded-full">
 				</div>
 			</button>
-			<div v-auto-animate class="profile-blocks w-[200px] absolute top-[80px] rounded bg-white p-4 model" v-if="show" ref="modal">
+			<div v-auto-animate class="profile-blocks w-[200px] absolute top-[80px] left-[-400%] shadow-2xl rounded-lg bg-white p-4 model" v-if="show" ref="modal">
 				<div class="pb-3">{{user.name}} {{user.surname}}</div>
 				<profile-menu-list :links="{
 					main: 'profile-list space-y-6',

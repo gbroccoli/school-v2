@@ -11,10 +11,10 @@ use Illuminate\Support\Facades\Storage;
 
 class RegisterController extends Controller
 {
-//	public function index(): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
-//	{
-//		return view('auth.register');
-//	}
+	public function index(): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
+	{
+		return view('auth.register');
+	}
 
     public function store(Request $request): \Illuminate\Http\RedirectResponse
 	{

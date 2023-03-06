@@ -3,7 +3,7 @@
 @section('title', 'Регестрация')
 
 @section('main')
-<form action="/register" method="POST">
+<form action="/auth/register" method="POST">
 	@csrf
 	<input type="text" name="surname" placeholder="surname">
 	<input type="text" name="name" placeholder="name">

@@ -19,7 +19,7 @@ use \App\Http\Controllers\AuthService;
 Route::view('/', 'index')->name('index');
 
 Route::group(['prefix'=>'auth'], function () {
-//	Route::get("/register", [\App\Http\Controllers\RegisterController::class, 'index'])->name("register");
+	Route::get("/register", [\App\Http\Controllers\RegisterController::class, 'index'])->name("register");
 	Route::post("/register", [\App\Http\Controllers\RegisterController::class, 'store'])->name('singup');
 
 	Route::get('/signin', [AuthService::class, "viewLogin"])->name('login');
@@ -28,7 +28,7 @@ Route::group(['prefix'=>'auth'], function () {
 	Route::post('/signout', [\App\Http\Controllers\AuthService::class, "signout"])->name('signout');
 });
 
-Route::group(['prefix'=>'user'], function () {
+Route::group(['prefix'=>'user', 'middleware'=>['auth']], function () {
 	Route::get("/profile", [\App\Http\Controllers\UserController::class, 'index'])->name('profile');
 	Route::get("/setting")->name("setting");
 });

@@ -12,7 +12,9 @@ class UserController extends Controller
 	{
 		if (Auth::check())
 		{
-
+			return view('account.index');
 		}
+
+		return to_route('signin');
 	}
 }
