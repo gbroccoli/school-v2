@@ -1,5 +1,5 @@
 <template>
-	<div class="flex bg-white w-[550px] rounded-full items-center mt-6 justify-between relative">
+	<div class="flex bg-white w-[550px] rounded-full items-center justify-between relative">
 		<input type="text" name="search" maxlength="50" class="font-[IBM_Plex_Sans] border-none rounded-l-full w-full outline-none px-[15px] py-[10px]" @focus.prevent="search" :value="value" @input.prevent="(e)=>{
 			value = e.target.value;
 			sortBySearch(value)
