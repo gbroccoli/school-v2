@@ -24,7 +24,7 @@
 import { defineComponent, ref, Ref } from 'vue';
 import axios from 'axios';
 import route from 'ziggy-js';
-import UiButton from "../../shared/UI/uiButton.vue";
+import UiButton from "@/shared/UI/uiButton.vue";
 
 export default defineComponent({
 	name: 'LoginForm',
@@ -72,7 +72,5 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-.login-remember:checked {
-	background-color: green;
-}
+
 </style>

@@ -1,9 +1,9 @@
-/** @type {import('tailwindcss').Config} */
+import { Config } from 'tailwindcss';
 
-const {fontFamily } = require('tailwindcss/defaultTheme')
+const {fontFamily } = require('tailwindcss/defaultTheme');
 
-module.exports = {
-    darkMode: 'class',
+const tailwindConfig: Config = {
+	darkMode: 'class',
 	content: [
 		"./resources/**/*.blade.php",
 		"./resources/**/*.ts",
@@ -18,4 +18,6 @@ module.exports = {
 		},
 	},
 	plugins: [],
-}
+};
+
+export default tailwindConfig;

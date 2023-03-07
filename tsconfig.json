@@ -3,7 +3,11 @@
         "target": "ESNext",
         "module": "ES2022",
         "moduleResolution": "node",
-        "baseUrl": "./",
+        "baseUrl": ".",
+		"paths": {
+			"@/*": ["resources/ts/*"],
+			"@image/*": ["storage/*"]
+		},
         "strict": true, // Enable strict type-checking options
         "skipLibCheck": true, // Skip type checking of declaration files
         "noImplicitAny": false, // Bypass raising errors on `any` type

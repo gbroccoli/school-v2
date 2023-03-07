@@ -39,7 +39,7 @@
 
 <script lang="ts">
 import {defineComponent, PropType, onMounted, ref, Ref} from 'vue'
-import {Profile} from "../../model/model"
+import {Profile} from "@/model/model"
 import ProfileMenuList from "./components/ProfileMenuList.vue";
 import axios from "axios";
 import route from "ziggy-js";
