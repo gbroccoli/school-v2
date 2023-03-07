@@ -32,10 +32,13 @@
 
 					@endphp
 
+					<search-post></search-post>
+
 					<profile-menu users='@json($user)'></profile-menu>
 				@endauth
 
 				@guest
+
 					<a href="{{route('login')}}" class="block text-white border px-[1.5rem] py-[0.5rem]">Войти</a>
 				@endguest
 			</div>

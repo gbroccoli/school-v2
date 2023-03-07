@@ -41,7 +41,7 @@ class AuthService extends Controller
 
 	}
 
-	public function signout(Request $request)
+	public function signout(Request $request): \Illuminate\Http\JsonResponse
 	{
 		Auth::logout();
 
@@ -49,6 +49,6 @@ class AuthService extends Controller
 
 		$request->session()->regenerateToken();
 
-		return response()->json(['message' => 'Выход выполнен успешно']);
+		return response()->json(['msg' => 'Выход выполнен успешно']);
 	}
 }

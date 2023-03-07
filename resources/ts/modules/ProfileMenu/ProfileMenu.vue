@@ -16,7 +16,7 @@
 					urls: [
 						{
 							icon: '',
-							url: '',
+							url: route('profile'),
 							title: 'Профиль'
 						},
 						{
