@@ -1,3 +1,10 @@
+export interface Value {
+	id: number
+	group: string
+	created_at?: string | Date
+	updated_at?: string | Date
+}
+
 export interface Clock {
 	hour?: number|string| Date
 	minute?: number|string| Date

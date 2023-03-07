@@ -43,9 +43,13 @@ export default defineComponent({
 			this.result = []
 
 			new Api().
-				methodGetUrl("material", ``).then(res=>res.map((item)=>{
-					this.result = res;
-				}))
+				methodGetUrl("material", ``).then(res=>{
+					if (res.length > 0) {
+						res.filter((item)=>{
+							this.result = res;
+						})
+					}
+			})
 		},
 
 		sortBySearch(value) {

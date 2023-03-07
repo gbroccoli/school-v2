@@ -19,6 +19,7 @@
         "resources/ts/**/*",
         "resources/css/**/*",
         "resources/img/**/*",
-        "resources/sass/**/*"
+        "resources/sass/**/*",
+		"vite.config.ts"
     ] // Frontend paths pattern
 }

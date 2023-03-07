@@ -1,7 +1,7 @@
 <script setup lang="ts">
 
 import {Ref, ref, PropType} from "vue"
-import {Accordions} from "../../model/model"
+import {Accordions} from "@/model/model"
 
 let open : Ref<boolean> = ref(false)
 

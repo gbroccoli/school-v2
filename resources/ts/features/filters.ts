@@ -1,4 +1,4 @@
-import { Value } from "../model/model"
+import { Value } from "@/model/model"
 
 export const noAdmin = (value: Value[], args: any) => {
 	return value.filter(item => {

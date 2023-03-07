@@ -6,7 +6,7 @@
 <script lang="ts">
 
 import {defineComponent} from "vue"
-import Accordion from "../../shared/UI/Accordion.vue";
+import Accordion from "@/shared/UI/Accordion.vue";
 
 export default defineComponent({
 	name: "CardItem",

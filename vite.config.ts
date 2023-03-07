@@ -27,5 +27,5 @@ export default defineConfig({
 			"@image": path.resolve(__dirname, "./storage/"),
 			"@": path.resolve(__dirname, "./resources/ts/")
 		}
-	}
+	},
 });
