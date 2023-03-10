@@ -63,10 +63,10 @@ const props = defineProps({
 		default: 'rounded-cray-all'
 	},
 
-	// disabled: {
-	// 	type: Boolean as PropType<boolean>,
-	// 	default: false
-	// }
+	disabled: {
+		type: Boolean as PropType<boolean>,
+		default: false
+	}
 })
 
 </script>
@@ -80,7 +80,14 @@ const props = defineProps({
 		roundedItem[rounded]
 		]"
 		:type="type"
+		:disabled="disabled"
 	>
 		{{label}}
 	</button>
 </template>
+
+<style lang="scss">
+.btn:disabled {
+	cursor: default;
+}
+</style>

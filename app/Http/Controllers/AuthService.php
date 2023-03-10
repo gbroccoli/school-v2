@@ -17,10 +17,10 @@ class AuthService extends Controller
 		return view('auth.login');
 	}
 
-    public function login(Request $request): \Illuminate\Http\JsonResponse
+    public function login(Request $request)
 	{
 		if (Auth::check()) {
-			return response()->json(["msg"=>"Пользователь авторизирован"]);
+			return response()->json(['authorization'=>true]);
 		}
 
 		$form = $request->only([
@@ -37,8 +37,6 @@ class AuthService extends Controller
 		} else {
 			return response()->json(['authorization'=>false]);
 		}
-
-
 	}
 
 	public function signout(Request $request): \Illuminate\Http\JsonResponse

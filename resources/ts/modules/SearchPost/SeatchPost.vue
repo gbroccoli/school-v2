@@ -24,7 +24,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import {defineComponent, ref, Ref} from 'vue'
 import SearchIcon from "@/shared/icons/SearchIcon.vue";
 import Api from "@/features/server-api";
 import { Posts } from '@/model/model';
