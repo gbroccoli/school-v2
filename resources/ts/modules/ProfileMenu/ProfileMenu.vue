@@ -2,8 +2,8 @@
 	<div class="profile relative">
 		<div>
 			<button class="profile-avatars rounded-full cursor-pointer" @click="show = !show" v-click-away="handleClick">
-				<div v-if="user.avatar !== 'user.png'" class="w-[45px]">
-					<img :src="'/storage/avatars/' + user.avatar" alt="avatar">
+				<div v-if="user.avatar === 'user.png'" class="w-[45px]">
+					<img :src="profilePhoto" alt="avatar" class="rounded-full">
 				</div>
 				<div v-else class="w-[45px]">
 					<img src="/img/default/user.png" alt="avatar" class="rounded-full">
@@ -38,7 +38,7 @@
 </template>
 
 <script lang="ts">
-import {defineComponent, PropType, onMounted, ref, Ref} from 'vue'
+import {defineComponent, PropType, ref, Ref, onMounted, onBeforeUnmount} from 'vue'
 import {Profile} from "@/model/model"
 import ProfileMenuList from "./components/ProfileMenuList.vue";
 import axios from "axios";
@@ -50,7 +50,8 @@ export default defineComponent({
 	data() {
 		return {
 			user: {} as Profile,
-			show: false as boolean
+			show: false as boolean,
+			profilePhoto: null as string | null
 		}
 	},
 
@@ -60,7 +61,7 @@ export default defineComponent({
 		}
 	},
 
-	setup() {
+	setup(props) {
 		const domainName : Ref<string | null> = ref( null);
 		const loginError : Ref<string | null> = ref(null);
 
@@ -91,11 +92,42 @@ export default defineComponent({
 	mounted() {
 		// @ts-ignore
 		this.user = JSON.parse(this.users);
+
+		this.loadProfilePhoto(this.user.id)
 	},
 
 	methods: {
 		handleClick(): void {
 			this.show = false
+		},
+
+		async loadProfilePhoto(userId: number | string) {
+			try {
+				try {
+					const response = await axios.get(route('avatar', userId), {
+						responseType: 'blob'
+					});
+
+					if (response.status === 200)
+					{
+						const imageUrl = URL.createObjectURL(response.data);
+						this.profilePhoto = imageUrl;
+					}
+				} catch (e) {
+					console.error("Не полученно")
+				}
+
+			} catch (error) {
+				console.error(error);
+				// обработка ошибок
+			}
+		},
+
+	},
+
+	beforeUnmount() {
+		if (this.profilePhoto) {
+			URL.revokeObjectURL(this.profilePhoto);
 		}
 	}
 })

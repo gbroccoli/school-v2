@@ -7,7 +7,7 @@ export default createStore({
 	state () {
 		return {
 			// @ts-ignore
-			csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+			// csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
 		}
 	}
 })

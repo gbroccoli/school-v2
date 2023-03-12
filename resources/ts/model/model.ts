@@ -18,7 +18,7 @@ export interface Opt {
 }
 
 export interface Profile {
-	id: number,
+	id: number | string,
 	surname: string,
 	name: string,
 	patronymic?: string,

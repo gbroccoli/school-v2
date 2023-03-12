@@ -31,6 +31,8 @@ Route::group(['prefix'=>'auth'], function () {
 Route::group(['prefix'=>'user', 'middleware'=>['auth']], function () {
 	Route::get("/profile", [\App\Http\Controllers\UserController::class, 'index'])->name('profile');
 	Route::get("/setting")->name("setting");
+
+	Route::get('/profile/{userID}/avatar', [\App\Http\Controllers\UserController::class, "getProfilePhoto"])->name('avatar');
 });
 
 Route::get('/email/verify', function () {
