@@ -50,3 +50,9 @@ export interface urlsAny {
 	chiles2: string,
 	url: string[] | void | number[]
 }
+
+export interface arg {
+	id: number,
+	name_arg: string,
+	option_arg: string[] | number | string | number[]
+}
