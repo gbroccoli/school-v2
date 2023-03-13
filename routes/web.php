@@ -30,7 +30,10 @@ Route::group(['prefix'=>'auth'], function () {
 
 Route::group(['prefix'=>'user', 'middleware'=>['auth']], function () {
 	Route::get("/profile", [\App\Http\Controllers\UserController::class, 'index'])->name('profile');
-	Route::get("/setting")->name("setting");
+	Route::get("/setting", [\App\Http\Controllers\UserController::class, "viewAccountSetting"])->name("setting");
+	Route::post("/setting", [\App\Http\Controllers\UserController::class, "storeAccountSetting"])->name("store.setting");
+
+	Route::get("/profile/{userID}", [\App\Http\Controllers\UserController::class, "profileOtherUser"])->name("otherUser");
 
 	Route::get('/profile/{userID}/avatar', [\App\Http\Controllers\UserController::class, "getProfilePhoto"])->name('avatar');
 });

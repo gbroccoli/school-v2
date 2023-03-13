@@ -9,11 +9,11 @@
 # @lang('Hello!')
 @endif
 @endif--}}
+	<h1>IT Штаб-квартира</h1>
 
 {{-- Intro Lines --}}
 @foreach ($introLines as $line)
 {{ $line }}
-
 @endforeach
 
 {{-- Action Button --}}

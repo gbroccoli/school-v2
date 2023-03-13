@@ -25,6 +25,12 @@
 							title: 'Файлы'
 						},
 						{
+
+							icon: '',
+							url: route('setting'),
+							title: 'Настройки'
+						},
+						{
 							icon: '',
 							url: logout,
 							title: 'Выход'

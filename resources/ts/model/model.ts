@@ -14,7 +14,7 @@ export interface Clock {
 export interface Opt {
 	id: number,
 	appellation: string,
-	option?: string[]
+	option?: string[] | object[] | object | string
 }
 
 export interface Profile {

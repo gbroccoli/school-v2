@@ -10,12 +10,13 @@ use Laravel\Sanctum\HasApiTokens;
 
  /**
   * @method static create(array $array)
+  * @property mixed $avatar
   */
  class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    /**
+	 /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
@@ -26,6 +27,7 @@ use Laravel\Sanctum\HasApiTokens;
 		'patronymic',
         'email',
 		'group_id',
+		'avatar',
 		'course_group',
         'password',
 		"token"

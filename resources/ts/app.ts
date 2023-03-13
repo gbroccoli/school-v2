@@ -2,8 +2,9 @@ import './bootstrap.ts';
 import '../scss/app.scss'
 import {createApp} from "vue/dist/vue.esm-bundler";
 import { autoAnimatePlugin } from '@formkit/auto-animate/vue'
-import uiMain from './components/index'
-import search from "./modules/SearchPost/index"
+import uiMain from '@/components/index'
+import search from "@/modules/SearchPost/index"
+import AccountSetting from "@/modules/AccountSetting/index";
 // @ts-ignore
 import { ZiggyVue } from 'ziggy-js/dist/vue';
 import store from "./store/store";
@@ -25,6 +26,7 @@ uiMain.forEach(ui=>{
 app.component(search.name, search)
 app.component(cardItem.name, cardItem)
 app.component(profileMenu.name, profileMenu)
+app.component(AccountSetting.name, AccountSetting)
 
 
 app.component(loginForm.name, loginForm)
