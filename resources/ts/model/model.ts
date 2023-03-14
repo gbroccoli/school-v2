@@ -21,7 +21,7 @@ export interface Profile {
 	id: number | string,
 	surname: string,
 	name: string,
-	patronymic?: string,
+	patronymic: string | undefined,
 	email: string,
 	email_verified_at?: boolean | Date | string,
 	group_id: number | string,
@@ -55,4 +55,10 @@ export interface arg {
 	id: number,
 	name_arg: string,
 	option_arg: string[] | number | string | number[]
+}
+
+export interface FullDate {
+	years: string | number,
+	month: string | number,
+	days: string | number
 }

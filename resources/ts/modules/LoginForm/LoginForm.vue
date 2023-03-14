@@ -29,6 +29,10 @@ import UiButton from "@/shared/UI/uiButton.vue";
 export default defineComponent({
 	name: 'LoginForm',
 	components: {UiButton},
+	data() {
+		return {
+		}
+	},
 	setup() {
 		const email: Ref<string> = ref('');
 		const password: Ref<string> = ref('');
@@ -70,7 +74,3 @@ export default defineComponent({
 	},
 });
 </script>
-
-<style lang="scss" scoped>
-
-</style>

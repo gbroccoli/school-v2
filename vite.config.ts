@@ -25,7 +25,8 @@ export default defineConfig({
 	resolve: {
 		alias: {
 			"@image": path.resolve(__dirname, "./storage/"),
-			"@": path.resolve(__dirname, "./resources/ts/")
+			"@": path.resolve(__dirname, "./resources/ts/"),
+			"@style": path.resolve(__dirname, "./resources/scss/")
 		}
 	},
 });

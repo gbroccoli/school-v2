@@ -1,7 +1,7 @@
 @extends('layout.index')
 
-@section('title', "Настройки | ")
+@section('title', "Настройка профиля | ")
 
 @section("main")
-<account-setting></account-setting>
+<account-setting users='@json(Auth::user())'></account-setting>
 @endsection

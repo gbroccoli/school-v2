@@ -6,7 +6,8 @@
         "baseUrl": ".",
 		"paths": {
 			"@/*": ["resources/ts/*"],
-			"@image/*": ["storage/*"]
+			"@image/*": ["storage/*"],
+			"@style/*": ["resources/scss/*"]
 		},
         "strict": true, // Enable strict type-checking options
         "skipLibCheck": true, // Skip type checking of declaration files

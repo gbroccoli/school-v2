@@ -32,7 +32,7 @@
 
 					@endphp
 
-					<search-post></search-post>
+{{--					<search-post></search-post>--}}
 
 					<profile-menu users='@json($user)'></profile-menu>
 				@endauth

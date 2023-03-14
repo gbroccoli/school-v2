@@ -9,26 +9,31 @@
 					<img src="/img/default/user.png" alt="avatar" class="rounded-full">
 				</div>
 			</button>
-			<div v-auto-animate class="profile-blocks w-[200px] absolute top-[80px] left-[-400%] shadow-2xl rounded-lg bg-white p-4 model" v-if="show" ref="modal">
-				<div class="pb-3">{{user.name}} {{user.surname}}</div>
-				<profile-menu-list :links="{
-					main: 'profile-list space-y-6',
+			<transition name="profile-ani">
+				<div v-auto-animate class="profile-blocks w-[200px] absolute top-[50px] left-[-400%] shadow-2xl rounded-lg bg-white p-4 model" v-if="show" ref="modal">
+					<profile-menu-list :links="{
+					main: 'profile-list space-y-4',
 					urls: [
 						{
-							icon: '',
+							icon: 'search-icon',
 							url: route('profile'),
-							title: 'Профиль'
+							title: `${user.surname} ${user.name}`
 						},
 						{
 							icon: '',
 							url: '#',
-							title: 'Файлы'
+							title: 'Цифровая хранилка'
 						},
 						{
 
 							icon: '',
 							url: route('setting'),
-							title: 'Настройки'
+							title: 'Настройки профиля'
+						},
+						{
+							icon: '',
+							url: '#',
+							title: 'Достижения на хранение'
 						},
 						{
 							icon: '',
@@ -37,8 +42,9 @@
 						}
 					]
 				}"
-				/>
-			</div>
+					/>
+				</div>
+			</transition>
 		</div>
 	</div>
 </template>
@@ -63,7 +69,8 @@ export default defineComponent({
 
 	props: {
 		users: {
-			type: String as PropType<string>
+			type: String,
+			required: true
 		}
 	},
 
@@ -96,7 +103,6 @@ export default defineComponent({
 	},
 
 	mounted() {
-		// @ts-ignore
 		this.user = JSON.parse(this.users);
 
 		this.loadProfilePhoto(this.user.id)
@@ -124,8 +130,7 @@ export default defineComponent({
 				}
 
 			} catch (error) {
-				console.error(error);
-				// обработка ошибок
+				console.error("Не получено");
 			}
 		},
 
@@ -138,3 +143,16 @@ export default defineComponent({
 	}
 })
 </script>
+
+<style>
+.profile-ani-enter-active,
+.profile-ani-leave-active {
+	transition: all 0.3s ease-in-out;
+}
+
+.profile-ani-enter,
+.profile-ani-leave-to {
+	transform: translateY(15px);
+	opacity: 0;
+}
+</style>

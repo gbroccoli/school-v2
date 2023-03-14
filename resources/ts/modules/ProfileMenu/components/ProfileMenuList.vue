@@ -2,6 +2,7 @@
 
 import { PropType } from "vue"
 import {urlsAny} from "@/model/model"
+import icon from "@/shared/icons/index"
 
 const props = defineProps({
 	links: {
