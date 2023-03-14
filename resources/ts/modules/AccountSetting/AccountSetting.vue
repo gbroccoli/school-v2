@@ -4,7 +4,7 @@
 
 			<div class="col-span-1">
 				<img :src="profilePhoto" alt="avatar" class="w-[115px] h-[115px] rounded-full">
-				<input type="file" id="avatar" class="hidden" ref="fileInput" @change="onFileSelected">
+				<input type="file" id="avatar" class="block" ref="fileInput" @change="onFileSelected">
 			</div>
 
 			<div class="col-span-3">

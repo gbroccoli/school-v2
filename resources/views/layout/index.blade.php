@@ -39,7 +39,7 @@
 
 				@guest
 
-					<a href="{{route('login')}}" class="block text-white border px-[1.5rem] py-[0.5rem]">Войти</a>
+					<a href="{{route('login')}}" class="block text-white border px-[1.5rem] py-[0.5rem] rounded">Войти</a>
 				@endguest
 			</div>
         </header>
