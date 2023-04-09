@@ -1,5 +1,5 @@
 import '@/bootstrap.ts';
-import '@style/app.scss'
+// import '@style/app.scss'
 import {createApp} from "vue/dist/vue.esm-bundler";
 import { autoAnimatePlugin } from '@formkit/auto-animate/vue'
 import uiMain from '@/components/index'
@@ -11,6 +11,12 @@ import cardItem from "@/modules/CardItem";
 import profileMenu from "@/modules/ProfileMenu";
 import VueClickAway from "vue3-click-away";
 import loginForm from "@/modules/LoginForm";
+
+
+// icon imports
+/*-----------------------------------------------------------------------------------------*/
+import ArrowRight from "@/shared/icons/ArrowRight.vue"
+/*-----------------------------------------------------------------------------------------*/
 
 const app = createApp({})
 
@@ -25,16 +31,15 @@ app.component(loginForm.name, loginForm)
 
 // icon
 /*-----------------------------------------------------------------------------------------*/
-import ArrowRight from "@/shared/icons/ArrowRight.vue"
-
 app.component('arrowRight', ArrowRight);
 /*-----------------------------------------------------------------------------------------*/
 
 // init
 /*-----------------------------------------------------------------------------------------*/
 app
-    .use(ZiggyVue)
+	.use(ZiggyVue)
 	.use(VueClickAway)
 	.use(store)
-    .use(autoAnimatePlugin)
-    .mount('#app')
+	.use(autoAnimatePlugin)
+	.mount('#app')
+

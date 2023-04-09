@@ -4,11 +4,13 @@ import vue from '@vitejs/plugin-vue';
 import path from "path";
 import { Plugin } from 'vite';
 
+// @ts-ignore
 export default defineConfig({
 	plugins: <Plugin[]>[
 		laravel({
-			input: ['resources/ts/app.ts'],
+			input: ['resources/ts/app.ts', "resources/scss/app.scss"],
 			refresh: true,
+			ssr: 'resources/ts/app.ts'
 		}),
 		vue({
 			template: {
@@ -20,7 +22,17 @@ export default defineConfig({
 					isCustomElement: (tag: string) => ['md-linedivider'].includes(tag),
 				}
 			}
-		})
+		}),
+		{
+			name: 'html',
+			// настройки плагина html
+			transformIndexHtml: true,
+			// настройки вставки атрибутов
+			attrs: {
+				// Добавляем атрибут defer для скрипта с именем app
+				script: 'defer',
+			},
+		},
 	],
 	resolve: {
 		alias: {

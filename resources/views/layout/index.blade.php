@@ -10,10 +10,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@100;200;300;400;500;600;700&family=IBM+Plex+Sans:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
 	<meta name="csrf-token" content="{{ csrf_token() }}">
+	@vite("resources/scss/app.scss")
     @routes
 </head>
 <body>
-    <div id="app" class="flex flex-col h-[100%]">
+
+    <div id="app" class="flex flex-col h-[100%] loader">
 
         <header class="flex-[0_0_auto] py-[15px] bg-green-900">
             <div class="container mx-auto flex justify-between items-center">
@@ -60,6 +62,6 @@
 		</footer>
 
     </div>
-    @vite('resources/ts/app.ts')
+	@vite('resources/ts/app.ts')
 </body>
 </html>
